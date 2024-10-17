@@ -21,6 +21,10 @@
         "consistent-return": "off",
         "no-alert": "off",
         "padded-blocks": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "radix": "off",
+        "max-classes-per-file": "off",
+        "no-plusplus": "off",
+        "no-restrict-syntax": "off"
     }
 }
