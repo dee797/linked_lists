@@ -52,36 +52,42 @@ class LinkedList {
 
 
     at(index) {
-        if (this.#linkedList.head === null) return console.log("There are currently no nodes stored in this list.");
+        // index must be 0-based
+
+        if (this.#linkedList.head === null) {
+            return "There are currently no nodes stored in this list.";
+        }
 
         let count = 0;
         let tempNode = this.#linkedList.head;
-        while (tempNode !== null && count <= index) {
+        while (tempNode !== null) {
+            if (count === index) break;
             tempNode = tempNode.next;
             count++;
         }
 
-        if (count !== index) return console.log("Index out of range.");
+        if (count !== index || tempNode === null) return "Index out of range.";
         return tempNode;
     }
 
 
     pop() {
-        if (this.#linkedList.head === null) return console.log("There are currently no nodes stored in this list.");
+        if (this.#linkedList.head === null) return "There are currently no nodes stored in this list.";
 
         let tempNode = this.#linkedList.head;
         let previousNode = tempNode;
-        while (tempNode !== null) {
+        while (tempNode.next !== null) {
             previousNode = tempNode;
             tempNode = tempNode.next;
         }
 
         previousNode.next = null;
+        return tempNode;
     }
 
 
     contains(value) {
-        if (this.#linkedList.head === null) return console.log("There are currently no nodes stored in this list.");
+        if (this.#linkedList.head === null) return "There are currently no nodes stored in this list.";
 
         let tempNode = this.#linkedList.head;
         while (tempNode !== null) {
@@ -93,8 +99,9 @@ class LinkedList {
 
 
     find(value) {
-        const doesContain = this.contains(value);
-        if (!doesContain) return null;
+        const containValue = this.contains(value);
+        if (!containValue) return null;
+        if (typeof containValue === 'string') return containValue;
 
         let count = 0;
         let tempNode = this.#linkedList.head;
