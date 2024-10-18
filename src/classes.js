@@ -126,6 +126,57 @@ class LinkedList {
         string += tempNode;
         return string;
     }
+
+
+    insertAt(value, index) {
+        if (this.#linkedList.head === null) {
+            this.prepend(value);
+            return;
+        }
+
+        let count = 0;
+        let tempNode = this.#linkedList.head;
+        while (tempNode !== null) {
+            if (count === index - 1) break;
+            tempNode = tempNode.next;
+            count++;
+        }
+
+        if (count !== index - 1 || tempNode === null) {
+            console.log("Index out of range.");
+            return;
+        }
+
+        tempNode.next = new Node(value, tempNode.next);        
+    }
+
+
+    removeAt(index) {
+        if (this.#linkedList.head === null) {
+            console.log("There are currently no nodes stored in this list.");
+            return;
+        }
+
+        let count = 0;
+        let tempNode = this.#linkedList.head;
+        let previousNode = tempNode;
+
+        while (tempNode !== null) {
+            if (count === index) break;
+            previousNode = tempNode;
+            tempNode = tempNode.next;
+            count++;
+        }
+        
+        if (count !== index || tempNode === null) {
+            console.log("Index out of range.");
+        } else if (count === 0 ) {
+            this.#linkedList.head = this.#linkedList.head.next; 
+        } else {
+            previousNode.next = tempNode.next;
+
+        }
+    }
 }
 
 
