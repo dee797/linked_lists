@@ -25,6 +25,7 @@
         "radix": "off",
         "max-classes-per-file": "off",
         "no-plusplus": "off",
-        "no-restrict-syntax": "off"
+        "no-restrict-syntax": "off",
+        "import/extensions": "off"
     }
 }
